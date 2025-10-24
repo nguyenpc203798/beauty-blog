@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Sparkles } from "lucide-react";
+import { Sparkles, LayoutDashboard } from "lucide-react";
 
 const Header = () => {
   return (
@@ -25,6 +25,13 @@ const Header = () => {
           <a href="#reviews" className="text-sm font-medium transition-smooth hover:text-primary">
             Reviews
           </a>
+          <Link 
+            to="/admin" 
+            className="flex items-center gap-2 text-sm font-medium transition-smooth hover:text-primary"
+          >
+            <LayoutDashboard className="h-4 w-4" />
+            Admin
+          </Link>
         </nav>
       </div>
     </header>
