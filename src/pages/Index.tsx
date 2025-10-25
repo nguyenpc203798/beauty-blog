@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import FeaturedSlider from "@/components/FeaturedSlider";
 import SearchBar from "@/components/SearchBar";
 import CategoryFilter from "@/components/CategoryFilter";
 import BlogCard from "@/components/BlogCard";
@@ -25,6 +26,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <Hero />
+      <FeaturedSlider />
       
       <main className="flex-1">
         <section id="posts" className="py-16">
