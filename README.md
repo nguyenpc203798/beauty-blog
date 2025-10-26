@@ -1,73 +1,221 @@
-# Welcome to your Lovable project
+# Beauty Glow Blog 🌟
 
-## Project info
+A modern, responsive beauty blog application with automatic content publishing from Google Sheets, built with React, TypeScript, Go, and MongoDB.
 
-**URL**: https://lovable.dev/projects/390daab5-54cd-4597-8f29-a4cad4ecb794
+## ✨ Features
 
-## How can I edit this code?
+### 🎨 Frontend (React + TypeScript)
 
-There are several ways of editing your application.
+- **Modern UI**: Beautiful, responsive design with Tailwind CSS
+- **Blog Management**: Full CRUD operations for blog posts
+- **Search & Filter**: Search posts by keywords and filter by category
+- **Admin Dashboard**: Manage posts, view statistics, and analytics
+- **Real-time Updates**: Live data synchronization with backend
 
-**Use Lovable**
+### 🔧 Backend (Go + MongoDB)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/390daab5-54cd-4597-8f29-a4cad4ecb794) and start prompting.
+- **RESTful API**: Clean and efficient API endpoints
+- **MongoDB Integration**: Scalable database architecture
+- **Google Sheets Sync**: Automatic content synchronization
+- **Telegram Integration**: Push notifications and content approval via Telegram
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🤖 Auto-Publishing System
 
-**Use your preferred IDE**
+- **Google Sheets Integration**: Monitor Google Sheets for new posts every 10 seconds
+- **Telegram Commands**: Approve or reject posts via Telegram
+- **Automatic Posting**: Approved posts are automatically published to the blog
+- **Status Tracking**: Track post status (Ready, Posted, Error) in Google Sheets
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📋 Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Before you begin, ensure you have the following installed:
 
-Follow these steps:
+- Node.js (v18 or higher)
+- Go (v1.21 or higher)
+- MongoDB (running locally or Atlas)
+- Google Cloud Console account (for Sheets API)
+- Telegram Bot Token
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🚀 Quick Start
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 1. Clone the Repository
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+git clone <repository-url>
+cd beauty-glow-blog-client
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### 2. Setup (React Client)
+
+#### Install dependencies
+
+```bash
+npm install
+```
+
+#### Set up environment variables
+
+Create a `.env.local` file:
+
+```env
+VITE_SERVER_DOMAIN=your_server_domain
+```
+
+#### Start the development server
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will start on `http://localhost:3000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📁 Project Structure
 
-**Use GitHub Codespaces**
+```
+test-task/
+├── beauty-glow-blog-client/        # React frontend
+│   ├── src/
+│   │   ├── api/                    # API client
+│   │   ├── components/             # React components
+│   │   ├── pages/                  # Page components
+│   │   ├── hooks/                  # Custom hooks
+│   │   └── lib/                    # Utilities
+│   ├── public/                     # Static assets
+│   └── package.json
+│
+└── beauty-glow-blog-server/        # Go backend
+    ├── controllers/                # Request handlers
+    ├── models/                     # Data models
+    ├── routes/                     # API routes
+    ├── config/                       # Config & DB
+    ├── service/                    # External services
+    ├── module/                     # Business logic
+    └── main.go                     # Entry point
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔌 API Endpoints
 
-## What technologies are used for this project?
+### Posts
 
-This project is built with:
+- `GET /api/posts` - Get all posts
+- `GET /api/posts/:id` - Get post by ID
+- `POST /api/posts` - Create a new post
+- `PUT /api/posts/:id` - Update a post
+- `DELETE /api/posts/:id` - Delete a post
+- `GET /api/posts/filter?category=...` - Filter by category
+- `GET /api/posts/search?q=...` - Search posts
+- `GET /api/posts/related?currentPostId=...&category=...&limit=...` - Get related posts
 
-- Vite
+### Webhooks
+
+- `POST /webhook/telegram` - Telegram webhook handler
+
+## 📊 Google Sheets Integration
+
+### Sheet Structure
+
+The Google Sheet should have the following columns:
+
+- Column A: Post ID
+- Column B: Title
+- Column C: Excerpt
+- Column D: Content
+- Column E: Author
+- Column F: Category
+- Column G: Tags
+- Column H: Image URL
+- Column I: Status (Ready, Posted, Error)
+- Column J: Telegram Command
+- Column K: Post URL (auto-generated)
+
+### Post Status Flow
+
+1. **Ready**: Post is ready for review
+2. **Posted**: Post has been approved and published
+3. **Error**: Post has been rejected or has errors
+
+## 🤖 Telegram Commands
+
+### Approve a Post
+
+Send the Telegram command (e.g., `post123`) to approve and publish the post.
+
+### Reject a Post
+
+Send `reject post123` to reject the post and mark status as "Error".
+
+## 🎨 Features in Detail
+
+### Home Page
+
+- Featured blog posts slider
+- Category filtering
+- Search functionality
+- Responsive grid layout
+
+### Blog Post Page
+
+- Full post content
+- Related posts section
+- Reading time estimation
+- Social sharing capabilities
+
+### Admin Dashboard
+
+- Post statistics
+- Create, edit, delete posts
+- Category and tag management
+- Real-time updates
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+- React 18
 - TypeScript
-- React
-- shadcn-ui
+- Vite
 - Tailwind CSS
+- Shadcn UI
+- Axios
 
-## How can I deploy this project?
+### Backend
 
-Simply open [Lovable](https://lovable.dev/projects/390daab5-54cd-4597-8f29-a4cad4ecb794) and click on Share -> Publish.
+- Go (Golang)
+- Gin Web Framework
+- MongoDB
+- Google Sheets API
+- Telegram Bot API
 
-## Can I connect a custom domain to my Lovable project?
+## 📝 Development
 
-Yes, you can!
+### Adding a New Post Category
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Update the categories list in `post.api.ts`
+2. Add the category to the Google Sheet
+3. Backend will automatically pick up new categories
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Customizing Styles
+
+The project uses Tailwind CSS. Modify `src/index.css` or individual component styles.
+
+### Modifying API Endpoints
+
+Update the routes in `beauty-glow-blog-server/routes/blog_routes.go`
+
+## 🚀 Deployment
+
+### Frontend
+
+```bash
+npm run build
+# Deploy the dist folder to your hosting provider
+```
+
+### Backend
+
+```bash
+go build -o beauty-blog-server main.go
+# Run the binary on your server
+```
+
+Built with ❤️ using React, TypeScript, Go, and MongoDB
